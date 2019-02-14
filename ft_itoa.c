@@ -7,7 +7,9 @@ char	*ft_itoa(int nbr)
 	int		len;
 	int		posneg;
 	char	*str;
-
+	
+	if (nbr == -2147483648)
+		return ("-2147483648");
 	if (nbr == 0)
 	{
 		str = malloc(2);
