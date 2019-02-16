@@ -12,7 +12,7 @@ void	fprime(int n)
 		{
 			printf("%i*", div);
 			n /= div;
-			div = 2;
+			div = 1;
 		}
 		div++;
 	}

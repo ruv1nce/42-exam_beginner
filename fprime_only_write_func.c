@@ -75,7 +75,7 @@ void	fprime(int n)
 			ft_putnbr(div);
 			write(1, " * ", 3);
 			n /= div;
-			div = 2;
+			div = 1;
 		}
 		div++;
 	}

@@ -11,6 +11,15 @@ char	*ft_itoa_base(int value, int base)
 
 	sign = 1;
 	len = 0;
+	if (value == 0)
+	{
+		str = malloc(2);
+		if (!str)
+			return (NULL);
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
+	}
 	if (value < 0)
 	{
 		if (base == 10)
