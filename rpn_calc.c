@@ -22,6 +22,12 @@ static t_list	*pop(t_list *stack)
 	return (stack);
 }
 
+static void		clear_list(t_list *stack)
+{
+	while (stack)
+		stack = pop(stack);
+}
+
 static t_list	*push_from_str(t_list *stack, char *s)
 {
 	/* 12 chars is intmin + '\0' */
@@ -41,7 +47,7 @@ static t_list	*push_from_str(t_list *stack, char *s)
 	{
 		tmp[i] = *s;
 		i++;
-		s++;			// do inline incrementations
+		s++;
 	}
 	tmp[i] = '\0';
 	nbr = atoi(tmp);
@@ -63,9 +69,9 @@ static t_list	*calc(t_list *stack, char op)
 		return (push(stack, (x - y)));
 	else if (op == '*')
 		return (push(stack, (x * y)));
-	else if (op == '/')
+	else if (op == '/' && y != 0)
 		return (push(stack, (x / y)));
-	else if (op == '%')
+	else if (op == '%' && y != 0)
 		return (push(stack, (x % y)));
 	else
 		return (NULL);
@@ -86,8 +92,12 @@ int			main(int argc, char **argv)
 		{
 			if (ISNUM || ISSIGN)
 			{
-				/* add malloc error case (return NULL?) */
-				stack = push_from_str(stack, s);
+				/* malloc error case */
+				if (!(stack = push_from_str(stack, s)))
+				{
+					clear_list(stack);
+					return (1);
+				}
 				s++;
 				while (ISNUM)
 					s++;
@@ -96,20 +106,32 @@ int			main(int argc, char **argv)
 				s++;
 			else if (ISOP)
 			{
-				/* add Error case when calc can't be performed*/
-				stack = calc(stack, *s);
+				/* error when stack is empty or contatins only one element */
+				if (!stack || !stack->next)
+				{
+					clear_list(stack);
+					printf("Error\n");
+					return (1);
+				}
+				if(!(stack = calc(stack, *s)))
+				{
+					clear_list(stack);
+					printf("Error\n");
+					return (1);
+				}
 				s++;
 			}
 			else
 			{
+				clear_list(stack);
 				printf("Error\n");
-				return (0);
+				return (1);
 			}
 		}
 		if (stack->next)
 		{
 			printf("Error\n");
-			return (0);
+			return (1);
 		}
 		else
 			printf("%i\n", stack->num);
