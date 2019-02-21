@@ -18,7 +18,7 @@ char **make_area(char **zone)
 	if (zone[0])
 		while (zone[0][cols])
 			cols++;
-	printf("cols %i, rows %i\n", cols, rows);
+//	printf("cols %i, rows %i\n", cols, rows);	//	KILLME
 	/* allocate for pointer array + 1 for terminating pointer */
 	if (!(area = malloc((rows + 1) * sizeof(char *))))
 		return (NULL);

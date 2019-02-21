@@ -8,8 +8,8 @@ void	flood_fill(char **tab, t_point size, t_point begin)
 
 	c = tab[begin.y][begin.x];
 	tab[begin.y][begin.x] = 'F';
-	printf("x %i, y %i\n", begin.x, begin.y);	//KILLME
-	print_tab(tab);	//KILLME
+//	printf("x %i, y %i\n", begin.x, begin.y);	//KILLME
+//	print_tab(tab);	//KILLME
 	if ((begin.x+1 < size.x) && (tab[begin.y][begin.x+1] == c))
 	{
 		begin.x = begin.x+1;

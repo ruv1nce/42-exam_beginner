@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>	//killme
 #include "flood_fill.h"
 #include "test_functions.h"
 
@@ -17,6 +18,7 @@ int main(void)
     area = make_area(zone);
     print_tab(area);
     flood_fill(area, size, begin);
-//    print_tab(area);
+	printf("\n");
+    print_tab(area);
     return (0);
 }
