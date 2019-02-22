@@ -10,7 +10,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	i = 0;
-	while (i < 200)
+	while (i < 2048)
 	{
 		string[i] = 0;
 		i++;
