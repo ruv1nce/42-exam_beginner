@@ -64,7 +64,7 @@ void		print_memory(const void *addr, size_t size)
 
 int        main(void)
 {
-        int        tab[15] = {0, 23, 150, 255, 12, 78,  21, 87664, 6545, 2147483647, -2147483648};
+        int        tab[1] = {255};
 
         print_memory(tab, sizeof(tab));
         return (0);

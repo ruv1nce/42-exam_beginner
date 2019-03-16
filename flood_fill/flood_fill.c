@@ -2,36 +2,18 @@
 #include <stdio.h>	//KILLME
 #include "test_functions.h"	//KILLME
 
-void	flood_fill(char **tab, t_point size, t_point begin)
+void	flood_fill(char **tab, t_point size, int x, int y)
 {
 	char	c;
 
-	c = tab[begin.y][begin.x];
-	tab[begin.y][begin.x] = 'F';
-//	printf("x %i, y %i\n", begin.x, begin.y);	//KILLME
-//	print_tab(tab);	//KILLME
-	if ((begin.x+1 < size.x) && (tab[begin.y][begin.x+1] == c))
-	{
-		begin.x = begin.x+1;
-		flood_fill(tab, size, begin);
-		begin.x = begin.x-1;
-	}
-	if (begin.x > 0 && (tab[begin.y][begin.x-1] == c))
-	{
-		begin.x = begin.x-1;
-		flood_fill(tab, size, begin);
-		begin.x = begin.x+1;
-	}
-	if ((begin.y+1 < size.y) && (tab[begin.y+1][begin.x] == c))
-	{
-		begin.y = begin.y+1;
-		flood_fill(tab, size, begin);
-		begin.y = begin.y-1;
-	}
-	if (begin.y > 0 && (tab[begin.y-1][begin.x] == c))
-	{
-		begin.y = begin.y-1;
-		flood_fill(tab, size, begin);
-		begin.y = begin.y+1;
-	}	
+	c = tab[y][x];
+	tab[y][x] = 'F';
+	if ((x+1 < size.x) && (tab[y][x+1] == c))
+		flood_fill(tab, size, x+1, y);
+	if (x > 0 && (tab[y][x-1] == c))
+		flood_fill(tab, size, x-1, y);
+	if ((y+1 < size.y) && (tab[y+1][x] == c))
+		flood_fill(tab, size, x, y+1);
+	if (y > 0 && (tab[y-1][x] == c))
+		flood_fill(tab, size, x, y-1);
 }
