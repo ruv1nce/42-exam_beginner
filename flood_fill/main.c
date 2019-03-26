@@ -17,7 +17,7 @@ int main(void)
     };
     area = make_area(zone);
     print_tab(area);
-    flood_fill(area, size, begin.x, begin.y);
+    flood_fill(area, size, begin);
 	printf("\n");
     print_tab(area);
     return (0);

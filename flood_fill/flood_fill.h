@@ -7,6 +7,6 @@ typedef struct	s_point
 	int           y;
 }				t_point;
 
-void	flood_fill(char **tab, t_point size, int x, int y);
+void	flood_fill(char **tab, t_point size, t_point begin);
 
 #endif
