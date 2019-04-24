@@ -62,7 +62,9 @@ static void	calc(t_list **stack, char op)
 
 	y = (*stack)->num;
 	pop(stack);
-	x = (*stack)->num;
+	x = 0;
+	if (*stack)
+		x = (*stack)->num;
 	pop(stack);
 	if (op == '+')
 		push(stack, (x + y));
